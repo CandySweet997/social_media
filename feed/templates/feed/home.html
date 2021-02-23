@@ -1,0 +1,55 @@
+{% extends 'feed/base.html' %}
+
+{%block content%}
+    <br>
+
+git
+    <div class="card">
+                      <div class="card-header">
+                          <h5>tweet</h5>
+                      </div>
+                      <div class="card-body">
+                          <h5 class="card-title">{{tweet.uname}}</h5>
+                          <form method="POST">
+                              <div class="input-group input-group-lg">
+                                  {%if tweetform%}
+                                  {%csrf_token%}
+                                  {{tweetform.as_p}}
+                                  {%endif%}
+                            </div>
+                              <br>
+                             <a href="#" class="btn btn-primary">Tweet</a>
+                          </form>
+                      </div>
+
+
+    <div class="container-fluid">
+        {% for tweet in tweets %}
+
+                        <br>
+                    </div>
+
+                    <br>
+
+                  <div class="card">
+                  <div class="card-header">
+                      <a  class="nav-link" href="#"><h5>{{tweet.uname}}</h5></a>
+
+                  </div>
+                  <div class="card-body">
+                      <p class="card-text"><h6>{{tweet.text}}</h6></p>
+                       <p><h6>{{tweet.datetime}}</h6></p>
+
+                  </div>
+
+                </div>
+
+                <br>
+        {% endfor %}
+    </div>
+
+
+
+
+
+{%endblock content%}
