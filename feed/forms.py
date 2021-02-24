@@ -1,10 +1,8 @@
 from .models import tweet
 from django import forms
 
-class tweetForm(forms.ModelForm):
-  text = forms.CharField
 
- class Meta:
+class TweetForm(forms.ModelForm):
+    class Meta:
         model = tweet
-        fields = ["text"]
-
+        fields = ['text']

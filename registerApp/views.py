@@ -5,10 +5,23 @@ from django.contrib.auth import authenticate, login as lo
 import string
 from django.contrib.auth.decorators import login_required
 from .models import profile
+from .forms import ProfileUpdateForm
+
+
+def profileupdate(request):
+    if request.method == 'POST':
+        pform = ProfileUpdateForm(request.POST, request.FILES)
+        if pform.is_valid():
+            pform.save()
+            return redirect('/profile')
+    else:
+        pform = ProfileUpdateForm()
+
+    return render(request, 'registerApp/profileupdate.html', {'pform': pform})
+
 
 @login_required
 def Profile(request):
-
     return render(request, 'registerApp/profile.html')
 
 

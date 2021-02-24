@@ -37,12 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'registerApp',
+    'registerApp.apps.RegisterappConfig',
     'register2App',
     "bootstrap4",
     'testApp',
-    'feed',
-    'accounts'
+    'feed.apps.FeedConfig',
+
 ]
 
 MIDDLEWARE = [

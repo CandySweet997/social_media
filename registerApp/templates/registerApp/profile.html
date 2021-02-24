@@ -1,16 +1,14 @@
 {% extends 'feed/base.html' %}
 
 {% block content %}
-
+    <br>
     <div class="container-fluid">
         <div class="col-sm-2">
-            <img class="rounded-circle account-img img-fluid" src="{{user.profile.image.url}}">
+            <img class="rounded-circle account-img img-fluid" src="{{user.profile.image.url}}" >
         </div>
     </div>
 
     <br>
-
-
 
     <div class="card">
          <div class="card-header">
@@ -18,7 +16,7 @@
 
                   </div>
         <div class="card-body">
-            <p> <h5>bio :</h5> {{user.profile.bio}}</p>
+            <p> bio :{{user.profile.bio}}</p>
 
          <br>
             <h5> first name :{{user.first_name}}</h5>
@@ -26,5 +24,9 @@
             <h5> email :{{user.email}}</h5>
     </div>
     </div>
+
+    <br>
+
+    <a   href="/profileupdate"> <button  class="btn btn-outline-info" >Edit</button></a>
 
 {%endblock content%}

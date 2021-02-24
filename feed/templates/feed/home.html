@@ -1,33 +1,39 @@
 {% extends 'feed/base.html' %}
 
 {%block content%}
+
+        <div class="jumbotron">
+          <h1 class="display-4">Hello, {{user.username}}!</h1>
+          <p class="lead">This is a simple twitter clone ! </p>
+          <hr class="my-4">
+          <p>Click below to Create Tweet</p>
+          <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button">Tweet</a>
+          </p>
+        </div>
+
     <br>
-
-git
-    <div class="card">
-                      <div class="card-header">
-                          <h5>tweet</h5>
-                      </div>
-                      <div class="card-body">
-                          <h5 class="card-title">{{tweet.uname}}</h5>
-                          <form method="POST">
-                              <div class="input-group input-group-lg">
-                                  {%if tweetform%}
+    <div class="container-fluid">
+        <div class="card">
+                          <div class="card-header">
+                              <h5>tweet</h5>
+                          </div>
+                          <div class="card-body">
+                              <form method="POST">
                                   {%csrf_token%}
-                                  {{tweetform.as_p}}
-                                  {%endif%}
-                            </div>
-                              <br>
-                             <a href="#" class="btn btn-primary">Tweet</a>
-                          </form>
-                      </div>
+                                  <input  type="text" name="text"  class="form-control" >
+                                   <br>
+                                  <button class="btn btn-outline-info" type="submit">Tweet</button>
+                              </form>
 
+                          </div>
+        </div>
+
+
+    </div>
 
     <div class="container-fluid">
-        {% for tweet in tweets %}
-
-                        <br>
-                    </div>
+        {% for tweet in object_list %}
 
                     <br>
 
@@ -43,13 +49,20 @@ git
                   </div>
 
                 </div>
-
-                <br>
-        {% endfor %}
     </div>
 
+                <br>
 
+        {% endfor %}
 
+{%if messages %}
+	<div class="alert alert-danger" role="alert">
 
+	{% for message in messages %}
+	<h5 align="center">{{message}}</h5>
+	{% endfor %}
+
+	</div>
+	{%endif%}
 
 {%endblock content%}
