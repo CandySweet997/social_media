@@ -8,52 +8,39 @@
           <hr class="my-4">
           <p>Click below to Create Tweet</p>
           <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Tweet</a>
+            <a class="btn btn-primary btn-lg" href="{% url 'tweetcreate' %}" role="button">Create tweet</a>
           </p>
         </div>
 
     <br>
-    <div class="container-fluid">
-        <div class="card">
-                          <div class="card-header">
-                              <h5>tweet</h5>
-                          </div>
-                          <div class="card-body">
-                              <form method="POST">
-                                  {%csrf_token%}
-                                  <input  type="text" name="text"  class="form-control" >
-                                   <br>
-                                  <button class="btn btn-outline-info" type="submit">Tweet</button>
-                              </form>
-
-                          </div>
-        </div>
 
 
-    </div>
-
-    <div class="container-fluid">
+    <div class="container-fluid" >
         {% for tweet in object_list %}
 
                     <br>
 
-                  <div class="card">
-                  <div class="card-header">
-                      <a  class="nav-link" href="#"><h5>{{tweet.uname}}</h5></a>
-
-                  </div>
+                  <div class="card w-50" >
+                      <div class="card-header">
+                       <a  class="nav-link" href="#"><h5>{{tweet.uname}}</h5></a>
+                      </div>
                   <div class="card-body">
-                      <p class="card-text"><h6>{{tweet.text}}</h6></p>
+                      <h5 class="card-title"> </h5>
+                      <p class="card-text"><h5>{{tweet.text}}</h5></p>
                        <p><h6>{{tweet.datetime}}</h6></p>
-
+                           {% if tweet.uname == user  %}
+                          <a href='{%url "tweetupdate" tweet.id%}'> <button  class="btn btn-outline-info" type="submit">Edit</button></a>
+                          <a href='{%url "tweetdelete" tweet.id%}'> <button  class="btn btn-outline-danger" type="submit">Delete</button></a>
+                          {% endif %}
                   </div>
 
                 </div>
+        {% endfor %}
     </div>
 
-                <br>
+    <br>
 
-        {% endfor %}
+
 
 {%if messages %}
 	<div class="alert alert-danger" role="alert">

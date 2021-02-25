@@ -2,9 +2,8 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+
 class tweet(models.Model):
-    text = models.CharField(max_length=280 , default="")
+    text = models.TextField(max_length=280, default="")
     datetime = models.DateTimeField(default=timezone.now)
-    uname = models.ForeignKey(User,on_delete=models.CASCADE)
-
-
+    uname = models.ForeignKey(User, on_delete=models.CASCADE)

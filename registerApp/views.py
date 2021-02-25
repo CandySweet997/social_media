@@ -6,9 +6,29 @@ import string
 from django.contrib.auth.decorators import login_required
 from .models import profile
 from .forms import ProfileUpdateForm
+from django.views.generic import ListView, CreateView, UpdateView,DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
-def profileupdate(request):
+# class ProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+#     model = profile
+#     template_name = 'registerApp/profileupdate.html'
+#     fields = ['image', 'bio']
+#     success_url = '/profile'
+#
+#     def form_valid(self, form):
+#         form.instance.uname = self.request.user
+#         return super().form_valid(form)
+#
+#     def test_func(self):
+#         profile = self.get_object()
+#         if self.request.user == profile.user:
+#             return True
+#         return False
+
+
+
+def ProfileUpdateView(request):
     if request.method == 'POST':
         pform = ProfileUpdateForm(request.POST, request.FILES)
         if pform.is_valid():
