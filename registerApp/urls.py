@@ -12,7 +12,7 @@ urlpatterns = [
     path('logout/', views.logout, name='logout'),
     path('profile/', views.Profile, name='profile'),
     path('profileupdate/', views.ProfileUpdateView, name='profileupdate'),
-    #path('profileupdate/', views.ProfileUpdateView.as_view(), name='profileupdate'),
+   # path('profileupdate/', views.ProfileUpdateView.as_view(), name='profileupdate'),
 
 ]
 if settings.DEBUG:

@@ -9,7 +9,7 @@ from .models import profile
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = profile
-        fields = ['image','bio']
+        fields = ['image', 'bio']
 
 
 

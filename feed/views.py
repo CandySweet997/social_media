@@ -1,6 +1,4 @@
 
-
-
 from .models import tweet
 from django.views.generic import ListView, CreateView, UpdateView,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -23,7 +21,7 @@ class TweetCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class TweetUpdateView(LoginRequiredMixin, UserPassesTestMixin,UpdateView):
+class TweetUpdateView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
     model = tweet
     template_name = 'feed/create.html'
     fields = ['text']
@@ -50,7 +48,3 @@ class TweetDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == tweet.uname:
             return True
         return False
-
-
-
-

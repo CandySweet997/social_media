@@ -6,7 +6,7 @@ import string
 from django.contrib.auth.decorators import login_required
 from .models import profile
 from .forms import ProfileUpdateForm
-from django.views.generic import ListView, CreateView, UpdateView,DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
@@ -17,7 +17,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 #     success_url = '/profile'
 #
 #     def form_valid(self, form):
-#         form.instance.uname = self.request.user
+#         form.instance.user = self.request.username
 #         return super().form_valid(form)
 #
 #     def test_func(self):
@@ -27,10 +27,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 #         return False
 
 
-
 def ProfileUpdateView(request):
     if request.method == 'POST':
-        pform = ProfileUpdateForm(request.POST, request.FILES)
+        pform = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
         if pform.is_valid():
             pform.save()
             return redirect('/profile')
